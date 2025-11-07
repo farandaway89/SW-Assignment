@@ -1,0 +1,26 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+vector<int> solution(vector<int> arr, vector<bool> flag) {
+    vector<int> answer;
+
+    for(int i = 0; i < flag.size(); i++) {
+        if(flag[i]) {
+            // flag[i]가 true이면 arr[i]를 arr[i] * 2번 추가
+            for(int j = 0; j < arr[i] * 2; j++) {
+                answer.push_back(arr[i]);
+            }
+        } else {
+            // flag[i]가 false이면 answer 배열의 마지막 arr[i]개의 원소를 제거
+            for(int j = 0; j < arr[i]; j++) {
+                if(!answer.empty()) {
+                    answer.pop_back();
+                }
+            }
+        }
+    }
+
+    return answer;
+}

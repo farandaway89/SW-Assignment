@@ -1,0 +1,31 @@
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int solution(vector<vector<int>> dots) {
+    int answer = 0;
+
+    // dots에서 x좌표와 y좌표의 최대, 최소값 찾기
+    vector<int> x_coords;
+    vector<int> y_coords;
+
+    for(int i = 0; i < dots.size(); i++) {
+        x_coords.push_back(dots[i][0]);
+        y_coords.push_back(dots[i][1]);
+    }
+
+    int x_min = *min_element(x_coords.begin(), x_coords.end());
+    int x_max = *max_element(x_coords.begin(), x_coords.end());
+    int y_min = *min_element(y_coords.begin(), y_coords.end());
+    int y_max = *max_element(y_coords.begin(), y_coords.end());
+
+    // 직사각형의 가로 x 세로
+    int width = x_max - x_min;
+    int height = y_max - y_min;
+
+    answer = width * height;
+
+    return answer;
+}
